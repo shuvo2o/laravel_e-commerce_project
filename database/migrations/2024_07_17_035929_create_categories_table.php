@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('category_slug');
             $table->string('image')->nullable();
             $table->timestamps();
+            
         });
     }
 

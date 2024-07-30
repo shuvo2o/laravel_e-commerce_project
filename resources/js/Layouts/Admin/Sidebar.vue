@@ -15,6 +15,9 @@ import NavLink from '@/Components/NavLink.vue';
                             Dashboard
                         </span>
                     </NavLink>
+
+
+                    <!-- Category -->
                     <NavLink :href="route('admin.categories')" :active="route().current('admin.categories')"
                         class="flex w-[200px] text-[16px] mt-3 py-2 items-start justify-start text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group" :class="{ 'active': route().current('admin.categories') }"> 
                         <span class="">
@@ -22,6 +25,26 @@ import NavLink from '@/Components/NavLink.vue';
                             Category
                         </span>
                     </NavLink>
+
+
+                    <!-- SubCategory -->
+                    <NavLink :href="route('admin.subcategories')" :active="route().current('admin.subcategories')"
+                        class="flex w-[200px] text-[16px] mt-3 py-2 items-start justify-start text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group" :class="{ 'active': route().current('admin.subcategories') }"> 
+                        <span class="">
+                            <i class="fa-solid fa-table-columns mr-2"></i>
+                            SubCategory
+                        </span>
+                    </NavLink>
+
+                    <!-- Slider -->
+                    <NavLink :href="route('admin.slider')" :active="route().current('admin.subcategories')"
+                        class="flex w-[200px] text-[16px] mt-3 py-2 items-start justify-start text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group" :class="{ 'active': route().current('admin.slider') }"> 
+                        <span class="">
+                            <i class="fa-solid fa-table-columns mr-2"></i>
+                            Slider
+                        </span>
+                    </NavLink>
+      
                 </li>
                 <!-- user  -->
                 <!-- <li>
