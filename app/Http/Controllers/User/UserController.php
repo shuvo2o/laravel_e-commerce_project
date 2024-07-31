@@ -9,12 +9,5 @@ use Inertia\Inertia;
 
 class UserController extends Controller
 {
-    public function Index(){
-        return Inertia::render('User/Index',[
-            'canLogin' =>app('router')->has('login'),
-            'canRegister' =>app('router')->has('register'),
-            'laravelVersion' =>Application::VERSION,
-            'phpVersion'=> PHP_VERSION,
-        ]);
-    }
+
 }

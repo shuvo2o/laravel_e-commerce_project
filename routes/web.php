@@ -10,8 +10,9 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Home\HomeController;
 
-Route::get('/',[UserController::class, 'Index'])->name('user.home');
+Route::get('/',[HomeController::class, 'Index'])->name('user.home');
 
 
 

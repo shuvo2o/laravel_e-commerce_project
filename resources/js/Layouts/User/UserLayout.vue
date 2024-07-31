@@ -1,43 +1,54 @@
+<!-- UserLayout.vue -->
 <script setup>
-import { ref } from 'vue';
 import { onMounted } from 'vue';
 import { initFlowbite } from 'flowbite';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
-import Navbar from './Navbar.vue';
-import Sidebar from './Sidebar.vue';
+import Header from './Header.vue';
+import Footer from './Footer.vue';
+import Hero from './Hero.vue';
+
+// Initialize components based on data attribute selectors
 onMounted(() => {
     initFlowbite();
-})
+});
 
-const showingNavigationDropdown = ref(false);
-
-// const props = defineProps({
-//     user: Object,
-// });
-
+const products = [
+    {
+        id: 1,
+        name: 'Basic Tee',
+        href: '#',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+        imageAlt: "Front of men's Basic Tee in black.",
+        price: '$35',
+        color: 'Black',
+    },
+    {
+        id: 2,
+        name: 'Basic Tee',
+        href: '#',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+        imageAlt: "Front of men's Basic Tee in black.",
+        price: '$35',
+        color: 'Black',
+    }
+];
 </script>
 
 <template>
-        
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <!-- Header Start -->
+    <Header></Header>
+    <!-- Header End -->
 
-            <Navbar/>
+    <!-- Hero Start -->
+    <Hero></Hero>
+    <!-- Hero End -->
 
-            <Sidebar />
-            <!-- Page Content -->
-            <main class="p-4 md:ml-64 h-auto pt-20">
-            <!-- <div v-if="$page.props.flash.message" class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 dark:bg-blue-100 alert" role="alert">
-             <div class="max-w-7xl mx-auto">{{ $page.props.flash.message }}</div>
-              </div> -->
-           <slot/>
+    <!-- Main Content Start -->
+    <slot :products="products"/>
+    <!-- Main Content End -->
 
-         </main>
-       
-      
-    </div>
+    <!-- Footer Start -->
+    <Footer></Footer>
+    <!-- Footer End -->
 </template>
+
+<style></style>
