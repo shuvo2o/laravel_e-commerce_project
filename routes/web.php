@@ -73,7 +73,7 @@ Route::delete('admin/slider/delete/{slider}',[SliderController::class,'SliderDel
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('user/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
+    // Route::get('user/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
 });
 
 

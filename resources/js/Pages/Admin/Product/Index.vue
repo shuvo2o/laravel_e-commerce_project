@@ -59,9 +59,9 @@ const deleteProduct =(id) => {
                                 <th scope="col" class="">Category</th>
                                 <th scope="col" class="">SubCategory</th>
                                 <th scope="col" class="">Product Name</th>
+                                <th scope="col" class="">Price</th>
                                 <th scope="col" class=""> Description</th>
                                 <th scope="col" class=""> Product Image</th>
-                                <th scope="col" class="">Featured Video</th>
                                 <th scope="col" class="px-7 py-4">Edit</th>
                                 <th scope="col" class="px-7 py-4">Delete</th>
                             </tr>
@@ -75,16 +75,11 @@ const deleteProduct =(id) => {
                                 <td class="px-2 py-1"> {{ products?.category_id}}</td>
                                 <td class="px-2 py-1"> {{ products?.subcategory_id}}</td>
                                 <td class="px-2 py-1"> {{ products.product_name }}</td>
+                                <td class="px-2 py-1"> {{ products.price }}</td>
                                 <td class="px-2 py-1"> {{ products.description }}</td>
                                 <td class="">
                                     <img :src="`/${products.product_image}`" :alt="image"
                                         class="h-12 w-12 object-cover rounded-full border border-blue-300 p-2" />
-                                </td>
-                                <td class="px-2 py-1">
-                                    <video class="h-20 w-20 object-cover rounded-sm border border-blue-300 p-2"
-                                    controls>
-                                        <source :src="`/${products.featured_video}`" type="video/mp4" >
-                                    </video>
                                 </td>
                                 <!-- <td class=" py-7 flex justify-center items-center gap-3">
                   <Link :href="route('products.edit', products.id)" class="font-medium text-green-600 dark:text-green-700 hover:underline title" title="Edit"><i class="fa-regular fa-pen-to-square"></i></Link>

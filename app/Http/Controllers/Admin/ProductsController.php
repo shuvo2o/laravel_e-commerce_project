@@ -42,7 +42,7 @@ class ProductsController extends Controller
             'product_name' => ['required', 'min:3'],
             'description' => ['nullable', 'min:3'],
             'product_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'],
-            'featured_video' => ['nullable', 'file', 'mimes:mp4,webm', 'max:100240'],
+            'price' => ['nullable'],
         ]);
 
         if ($validator->fails()) {
@@ -56,22 +56,13 @@ class ProductsController extends Controller
             $image->move('product_images', $imageName);
         }
 
-
-        $videoName = null;
-        if ($request->hasFile('featured_video')) {
-            $video = $request->file('featured_video');
-            $videoName = time() . '-' . Str::random(10) . '.' .
-                $video->getClientOriginalExtension();
-            $video->move(public_path('product_videos'), $videoName);
-        }
-
         $product = Product::create([
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
             'product_name' => $request->product_name,
             'description' => $request->description,
             'product_image' => 'product_images/' . $imageName,
-            'featured_video' => 'featured_videos/' . $videoName,
+            'price' => $request-> price,
 
         ]);
 
@@ -91,7 +82,6 @@ class ProductsController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'product_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
-            'featured_video' => ['nullable', 'file', 'mimes:mp4,webm', 'max:102400'],
         ]);
 
         if ($validator->fails()) {
@@ -109,16 +99,7 @@ class ProductsController extends Controller
             $imagePath = 'product_images/' . $uniqueName;
         }
 
-        $videoPath = $product->featured_video;
-        if ($request->hasFile('featured_video')) {
-            if ($product->featured_video && file_exists(public_path($product->featured_video))) {
-                unlink(public_path($product->featured_video));
-            }
-            $video = $request->file('featured_video');
-            $uniqueName = time() . '-' . Str::random(10) . '.' . $video->getClientOriginalExtension();
-            $video->move(public_path('featured_video'), $uniqueName);
-            $videoPath = 'featured_video/' . $uniqueName;
-        }
+
 
         $product->update([
             'category_id' => $request->category_id,
@@ -126,7 +107,7 @@ class ProductsController extends Controller
             'product_name' => $request->product_name,
             'description' => $request->description,
             'product_image' => $imagePath,
-            'featured_video' => $videoPath,
+            'price' => $request->price,
         ]);
 
         return Redirect::route('admin.products')->with('message', 'SubCategory deleted successfully.');
@@ -137,10 +118,6 @@ class ProductsController extends Controller
         $image = $product->image;
         if (File::exists($image)) {
             File::delete($image);
-        }
-        $video = $product->product_video;
-        if (File::exists($video)) {
-            File::delete($video);
         }
         $product->delete();
         return Redirect::route('admin.products')->with('message', 'Product Deleted Successfully.');

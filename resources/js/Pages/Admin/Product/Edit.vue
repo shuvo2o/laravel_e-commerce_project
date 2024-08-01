@@ -15,9 +15,9 @@ const form = useForm({
     category_id: props.product?.category_id || '',
     subcategory_id: props.product?.subcategory_id || '',
     product_name: props.product?.product_name || '',
+    price: props.product?.price || '',
     description: props.product?.description || '',
     product_image:null,
-    featured_video: null,
 });
 
 
@@ -39,11 +39,12 @@ const submit = () => {
         category_id: form.category_id,
         subcategory_id: form.subcategory_id,
         product_name: form.product_name,
+        price: form.price,
         description: form.description,
-        image: form.image,
-        product_video: form.product_video,
+        product_image: form.product_image,
     });
 }
+
 
 </script>
 
@@ -97,6 +98,13 @@ const submit = () => {
                             placeholder="Product Name" />
                     </div>
 
+                              <!-- price -->
+                              <div>
+                                <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                                <input type="text" id="price" v-model="form.price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Price"/>
+                                <!-- <div class="text-red-400 text-sm" v-if="errors.price">{{ errors.price }}</div> -->
+                            </div>
+
                     <!-- description -->
                     <div>
                         <label for="description"
@@ -123,7 +131,7 @@ const submit = () => {
                 </div>
 
                 <!-- featured video -->
-                <div>
+                <!-- <div>
                     <label for="featured_video" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Featured Video</label>
                     <input type="file" id="featured_video" @change="e => form.featured_video = e.target.files[0]"
@@ -137,7 +145,7 @@ const submit = () => {
                         </video>
                     </div>
 
-                </div>
+                </div> -->
                 <div class="flex items-center justify-end mt-4">
                     <button type="submit"
                         class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">

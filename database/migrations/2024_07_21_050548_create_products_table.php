@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('product_name'); 
             $table->longText('description')->nullable();
             $table->string('product_image')->nullable();
-            $table->string('featured_video')->nullable();
+            $table->float('price')->nullable();
             $table->timestamps();
         });
     }
