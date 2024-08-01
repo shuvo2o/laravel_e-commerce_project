@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function Index(){
         $products = Product::limit(8)->get();
-        return Inertia::render('User/Index',[
+        return Inertia::render('Home/HomePage',[
             'products' => $products,
             'canLogin' => app('router')->has('login'),
             'canRegister' => app('router')->has('register'),
