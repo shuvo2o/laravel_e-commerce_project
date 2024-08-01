@@ -11,6 +11,8 @@ defineProps({
   }
 });
 
+
+
 const deleteCategory = (id) => {
   Swal.fire({
     title: "Are you sure?",
@@ -93,6 +95,19 @@ const deleteCategory = (id) => {
                 </div>
             </div>
         </div>
+
+
+
+                <!-- <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px pt-5" aria-label="Pagination">
+                  <button v-for="link in subcategories.links" :key="link.url || link.label"
+                    @click.prevent="updatePageNumber(link)"
+                    :disabled="link.active || !link.url"
+                    class="relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                    :class="{'z-10 bg-indigo-50 border-indigo-500 text-indigo-600': link.active,
+                      'bg-white border-gray-300 text-gray-500 hover:bg-gray-50': !link.active}">
+                    <span v-html="link.label"></span>
+                  </button>
+                </nav> -->
 
 
 
